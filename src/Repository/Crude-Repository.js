@@ -8,7 +8,7 @@ class CrudRepository {
         const result = await this.model.create(data);
         return result; 
       } catch (error) {
-        console.log("Something went wrong in crud repo");
+       console.error("Crud repo error:", error.message, error.stack);
         throw error;
       }
     }
@@ -18,7 +18,7 @@ class CrudRepository {
          return result;
             
         } catch (error) {
-            console.log("Something went wrong in crud repo");
+            console.error("Crud repo error:", error.message, error.stack);
             throw error;
         
         }
@@ -30,7 +30,7 @@ class CrudRepository {
          return result;
             
         } catch (error) {
-            console.log("Something went wrong in crud repo");
+           console.error("Crud repo error:", error.message, error.stack);
             throw error;
         
         }
@@ -44,7 +44,7 @@ class CrudRepository {
          return result;
             
         } catch (error) {
-            console.log("Something went wrong in crud repo");
+           console.error("Crud repo error:", error.message, error.stack);
             throw error;
         
         }
@@ -55,7 +55,7 @@ class CrudRepository {
     const result = await this.model.findOne(filter);
     return result;
   } catch (error) {
-    console.log("Something went wrong in crud repo");
+    console.error("Crud repo error:", error.message, error.stack);
     throw error;
   }
 }
@@ -68,11 +68,10 @@ class CrudRepository {
 
             
         } catch (error) {
-             console.log("Something went worn in crud repo");
+             console.error("Crud repo error:", error.message, error.stack);
             throw error;
         
         }
     }
  }
-
  export default CrudRepository;

@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minlength: 20
+        
     },
 
    role: {
@@ -27,15 +27,15 @@ const userSchema = new mongoose.Schema({
 })
 
 // this is bycrypt I am  encrypting the password  for your understanding
-userSchema.pre('save', function (next){
+
+userSchema.pre('save', async function(){
     const user = this;
+    if (!user.isModified('password')) return;
     const SALT = bcrypt.genSaltSync(9);
     const encryptedPassword = bcrypt.hashSync(user.password,SALT);
     user.password= encryptedPassword;
-    next();
 
 });
-
 userSchema.methods.comparePassword = function compare(password){
     return bcrypt.compareSync(password, this.password);
 }
@@ -47,4 +47,5 @@ userSchema.methods.genJWT = function generate(){
 }
 
 
-export const User = mongoose.model('User', userSchema);
+ const User = mongoose.model('User', userSchema);
+    export default User;
