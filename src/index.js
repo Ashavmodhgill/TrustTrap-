@@ -9,6 +9,7 @@ import express from 'express';
  import apiRoutes from './routes/index.js';
  import passport from 'passport';
 import {passportAuth} from './config/jwt-middleware.js';
+
 passportAuth(passport);
 
 
