@@ -73,5 +73,14 @@ class CrudRepository {
         
         }
     }
+    async findById(id){
+      try {
+        const result = await this.model.findById(id);
+        return result;
+      } catch (error) {
+        console.error("Crud repo error:", error.message, error.stack);
+        throw error;
+      }
+    }
  }
  export default CrudRepository;
