@@ -8,6 +8,7 @@ const ProductSchema = new mongoose.Schema({
     price:{
         type: Number,
         required: true,
+        set: v => Number(v)
     },
     description:{
         type:String,
@@ -15,7 +16,8 @@ const ProductSchema = new mongoose.Schema({
     },
      category:{
         type: String,
-        required: true
+        enum: ["Mobile Phones", "Laptops", "Accessories"],
+        required: true,
      },
      shopkeeper: {
      type: mongoose.Schema.Types.ObjectId,

@@ -11,6 +11,7 @@ import {
     getproductByShopkeeper
 } from  '../../controller/product-controller.js';
 
+import { getProductsbyCategory } from '../../controller/category-controller.js';
 import passport from "passport";
 
 const router = express.Router();
@@ -30,4 +31,5 @@ router.get("/:id", getproductById);
 router.get("/category/:category",getproductByCategory);
 router.get("/shopkeeper/:shopkeeperId",getproductByShopkeeper);
 
+router.get("/:category", getProductsbyCategory);
 export default router;
