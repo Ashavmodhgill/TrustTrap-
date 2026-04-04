@@ -98,7 +98,7 @@ export const delecteProduct = async (req, res) => {
     }
 }
 
-export const getproductByCategory = async (req, res) => {
+export const GetproductByCategory = async (req, res) => {
     try {
         const product = await productService. getProductsByCategory(req.params.category);
         return res.status(201).json({
