@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrustTrap</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Iosevka+Charon+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+    <div class="page">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <div class="icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <span>AI Suggest</span>
+            </div>
+
+            <button class="new-chat-btn" onclick="newChat()">
+                <i class="fa-solid fa-plus" id="new-chat-btn"></i> New Chat
+            </button>
+
+            <span class="sidebar-label">Quick Prompts</span>
+
+            <div class="quick-prompts">
+                <button class="quick-prompt" onclick="sendQuick('Best smartphone under ₹15,000')">📱 Best smartphone
+                    under ₹15,000</button>
+                <button class="quick-prompt" onclick="sendQuick('Compare laptops under ₹50,000')">💻 Compare laptops
+                    under ₹50,000</button>
+                <button class="quick-prompt" onclick="sendQuick('Top earphones under ₹2,000')">🎧 Top earphones under
+                    ₹2,000</button>
+                <button class="quick-prompt" onclick="sendQuick('Best camera phone under ₹25,000')">📷 Best camera phone
+                    under ₹25,000</button>
+                <button class="quick-prompt" onclick="sendQuick('Smartwatch recommendations under ₹5,000')">⌚ Smartwatch
+                    under ₹5,000</button>
+            </div>
+
+            <a href="index.html" class="sidebar-back">
+                <i class="fa-solid fa-arrow-left"></i> Back to TrustTrap
+            </a>
+        </aside>
+
+        <!-- CHAT AREA -->
+        <div class="chat-area">
+
+            <!-- Mobile topbar -->
+            <div class="mob-topbar">
+                <button class="mob-menu-btn" onclick="openSidebar()"><i class="fa-solid fa-bars"></i></button>
+                <span class="mob-logo">✦ AI Suggest</span>
+                <div style="width:32px"></div>
+            </div>
+
+            <!-- Desktop topbar -->
+            <div class="topbar">
+                <div class="topbar-title">
+                    <div>
+                        <div class="dot"></div>
+                    </div>
+                    <div>
+                        <h2>TrustTrap AI Assistant</h2>
+                        <p>Powered by AI · Finds best products for your budget</p>
+                    </div>
+                </div>
+                <div class="topbar-badge">
+                    <i class="fa-solid fa-indian-rupee-sign"></i> Budget-aware suggestions
+                </div>
+            </div>
+
+            <!-- Messages -->
+            <div class="messages" id="messages">
+                <!-- Welcome screen -->
+                <div class="welcome" id="welcome">
+                    <div class="welcome-icon">✦</div>
+                    <h1>Hi! I'm your AI Shopping Guide</h1>
+                    <p>Tell me what product you're looking for and your budget — I'll find the best options available on
+                        TrustTrap for you.</p>
+                    <div class="welcome-chips">
+                        <button class="chip" onclick="sendQuick('Best phone under ₹10,000')">📱 Phone under
+                            ₹10K</button>
+                        <button class="chip" onclick="sendQuick('Laptop for students under ₹40,000')">💻 Student
+                            laptop</button>
+                        <button class="chip" onclick="sendQuick('Best earbuds under ₹3,000')">🎧 Earbuds under
+                            ₹3K</button>
+                        <button class="chip" onclick="sendQuick('Smart TV under ₹20,000')">📺 Smart TV</button>
+                        <button class="chip" onclick="sendQuick('Gaming accessories under ₹5,000')">🎮 Gaming
+                            gear</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input -->
+
+            <div class="input-bar">
+                <textarea id="userInput" placeholder="e.g. Best smartphone under ₹15,000..." rows="1"
+                    onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+                <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+                    <i class="fa-solid fa-paper-plane" id="send-btn"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
