@@ -4,175 +4,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>TrustTrap</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Iosevka+Charon+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
-    <div class="herosection ">
+
+    <!-- ─── HERO / HEADER ─── -->
+    <div class="herosection">
         <header class="header">
-            <div class="logo"> <img src="logo.png" alt=""></div>
+            <div class="logo"><img src="logo.png" alt="TrustTrap Logo"></div>
+<div class="search-box">
+  <input type="text" placeholder="Search here">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</div>
+
             <ul class="nav-list">
                 <li><a href="#home">Home</a></li>
+                <li><a href="#search">Category</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#search">Search</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" class="Ai">
+                    <button onclick="window.location.href='ai.html'">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> AI Suggestions
+                    </button>
+                </a></li>
             </ul>
-            <div class="nav_button"><button onclick="window.location.href='login&Signin.html#signup'">Sign up</button>
-                <button onclick="window.location.href='login&Signin.html#signup'">login</button>
+            <div class="nav_button">
+                <button onclick="window.location.href='login&Signin.html#signup'">Sign up</button>
+                <button onclick="window.location.href='login&Signin.html#signup'">Login</button>
             </div>
         </header>
+
         <div class="container1_outer">
             <div class="container1_inner">
-                <p>A platform that connects offline electronic shops with users searching for products like iPhones,
-                    laptops, or TVs. The goal is simple to help shopkeepers increase sales and give users confidence by
-                    finding trusted local stores for expensive electronics.</p><br>
-                <h4>Find trusted shops near you</h4>
+                <p>India's Largest Local Platform for Small Business Owners</p><br>
+                <h3>Discover a wide range of high-quality products and trusted brands — all in one platform.</h3>
+                <br>
+                <h4>What are you waiting for?</h4>
+                <br>
+                <div class="redbtn">
+                    <button class="Registerbutton" onclick="window.location.href='login&Signin.html'">Register Today!</button>
+                </div>
             </div>
         </div>
+    </div>
 
+    <!-- ─── INFO STRIP ─── -->
+    <div class="info1">
+        <p id="info1">Trusted by millions of people across India</p><br>
+        <h4>100% verified sellers. Zero compromise on quality.</h4>
     </div>
-    <div class="heroSection">
-        <div class="herosection1">How It Works?</div>
-        <div class="herosection1out">
-            <div class="herosection1outleft">
-                <div class="herosection1outleft_pic"></div>
+
+    <!-- ─── CARD SLIDER ─── -->
+    <div class="slider_container">
+        <div class="card-slider" id="slider">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/12575883/pexels-photo-12575883.jpeg" alt="">
+                <h2>Smartphones You Can Trust</h2>
+                <p>Top brands with warranty and secure payment options.</p>
+                <button>Shop Phones</button>
             </div>
-            <div class="herosection1outright">
-                <p> <i id="icon" class="fa-solid fa-square"></i>Search for your product.</p><br>
-                <p><i id="icon" class="fa-solid fa-square"></i> Discover verified local shops.</p><br>
-                <p><i id="icon" class="fa-solid fa-square"></i> Buy with confidence.</p>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/10104826/pexels-photo-10104826.jpeg" alt="">
+                <h2>Essential Accessories</h2>
+                <p>Quality chargers, headphones, and cases at the best prices.</p>
+                <button>Browse Accessories</button>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/19012049/pexels-photo-19012049.jpeg" alt="">
+                <h2>Powerful Laptops</h2>
+                <p>Reliable performance for work, study, and gaming.</p>
+                <button>Explore Laptops</button>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/2882659/pexels-photo-2882659.jpeg" alt="">
+                <h2>Secure Shopping Experience</h2>
+                <p>Verified sellers, safe payments, and buyer protection guaranteed.</p>
+                <button>Learn More</button>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/5622934/pexels-photo-5622934.jpeg" alt="">
+                <h2>Exclusive Deals</h2>
+                <p>Save big on phones, laptops, and accessories today.</p>
+                <button>See Offers</button>
+            </div>
+            <!-- duplicates for infinite scroll -->
+            <div class="card">
+                <img src="https://images.pexels.com/photos/12575883/pexels-photo-12575883.jpeg" alt="">
+                <h2>Smartphones You Can Trust</h2>
+                <p>Top brands with warranty and secure payment options.</p>
+                <button>Shop Phones</button>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/10104826/pexels-photo-10104826.jpeg" alt="">
+                <h2>Essential Accessories</h2>
+                <p>Quality chargers, headphones, and cases at the best prices.</p>
+                <button>Browse Accessories</button>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/19012049/pexels-photo-19012049.jpeg" alt="">
+                <h2>Powerful Laptops</h2>
+                <p>Reliable performance for work, study, and gaming.</p>
+                <button>Explore Laptops</button>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/2882659/pexels-photo-2882659.jpeg" alt="">
+                <h2>Secure Shopping Experience</h2>
+                <p>Verified sellers, safe payments, and buyer protection guaranteed.</p>
+                <button>Learn More</button>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/5622934/pexels-photo-5622934.jpeg" alt="">
+                <h2>Exclusive Deals</h2>
+                <p>Save big on phones, laptops, and accessories today.</p>
+                <button>See Offers</button>
             </div>
         </div>
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
     </div>
-    <div class="scroll-container">
-        <div class="scroll-content">
-            <div class="item">Product 1</div>
-            <div class="item">Product 2</div>
-            <div class="item">Product 3</div>
-            <div class="item">Product 4</div>
-            <div class="item">Product 5</div>
-            <div class="item">Product 1</div>
-            <div class="item">Product 2</div>
-            <div class="item">Product 3</div>
-            <div class="item">Product 4</div>
-            <div class="item">Product 5</div>
-        </div>
-    </div>
+
+    <!-- ─── PRODUCTS SECTION ─── -->
     <div class="information">
         <h1>Just Grab your Product</h1>
     </div>
-    <div class="shopping">            <div class="product">
-                <div class="product_pic"></div>
-                <div class="product_description">
-                 <h4>Product Name:</h4>
-                 <h4>Price:</h4>
-                 <h4>Shop Name:</h4>
-                 <h4>Shop Address:</h4>
-                 <h4>Mobile No:</h4>
-                 <h4>E-mail:</h4>
-                </div>
-                <div class="product_description_button">
-                    <button>Visit Shop Page</button>
-                    <button>Contact Shop</button>
-                </div>
-            </div>            <div class="product">
-                <div class="product_pic"></div>
-                <div class="product_description">
-                 <h4>Product Name:</h4>
-                 <h4>Price:</h4>
-                 <h4>Shop Name:</h4>
-                 <h4>Shop Address:</h4>
-                 <h4>Mobile No:</h4>
-                 <h4>E-mail:</h4>
-                </div>
-                <div class="product_description_button">
-                    <button>Visit Shop Page</button>
-                    <button>Contact Shop</button>
-                </div>
-            </div>            <div class="product">
-                <div class="product_pic"></div>
-                <div class="product_description">
-                 <h4>Product Name:</h4>
-                 <h4>Price:</h4>
-                 <h4>Shop Name:</h4>
-                 <h4>Shop Address:</h4>
-                 <h4>Mobile No:</h4>
-                 <h4>E-mail:</h4>
-                </div>
-                <div class="product_description_button">
-                    <button>Visit Shop Page</button>
-                    <button>Contact Shop</button>
-                </div>
-            </div>            <div class="product">
-                <div class="product_pic"></div>
-                <div class="product_description">
-                 <h4>Product Name:</h4>
-                 <h4>Price:</h4>
-                 <h4>Shop Name:</h4>
-                 <h4>Shop Address:</h4>
-                 <h4>Mobile No:</h4>
-                 <h4>E-mail:</h4>
-                </div>
-                <div class="product_description_button">
-                    <button>Visit Shop Page</button>
-                    <button>Contact Shop</button>
-                </div>
-            </div>            <div class="product">
-                <div class="product_pic"></div>
-                <div class="product_description">
-                 <h4>Product Name:</h4>
-                 <h4>Price:</h4>
-                 <h4>Shop Name:</h4>
-                 <h4>Shop Address:</h4>
-                 <h4>Mobile No:</h4>
-                 <h4>E-mail:</h4>
-                </div>
-                <div class="product_description_button">
-                    <button>Visit Shop Page</button>
-                    <button>Contact Shop</button>
-                </div>
-            </div>            <div class="product">
-                <div class="product_pic"></div>
-                <div class="product_description">
-                 <h4>Product Name:</h4>
-                 <h4>Price:</h4>
-                 <h4>Shop Name:</h4>
-                 <h4>Shop Address:</h4>
-                 <h4>Mobile No:</h4>
-                 <h4>E-mail:</h4>
-                </div>
-                <div class="product_description_button">
-                    <button>Visit Shop Page</button>
-                    <button>Contact Shop</button>
-                </div>
+
+    <div class="shopping">
+
+        <!--
+            HOW TO ADD A PRODUCT:
+            Copy one .product div below and fill in:
+              data-name        → product name
+              data-price       → price (e.g. ₹12,999)
+              data-category    → category label
+              data-description → short product description
+              data-image       → URL of product image (leave blank if shopkeeper will upload)
+        -->
+
+        <div class="product"
+            data-name="Samsung Galaxy A55"
+            data-price="₹32,999"
+            data-category="Smartphones"
+            data-description="6.6-inch Super AMOLED display, 50MP triple camera, 5000mAh battery, and 1-year Samsung brand warranty included."
+            data-image="">
+            <div class="product_pic"></div>
+            <div class="product_description">
+                <h4>Product Name: Samsung Galaxy A55</h4>
+                <h4>Price: ₹32,999</h4>
             </div>
+            <div class="product_description_button">
+                 
+            </div>
+        </div>
+
+        <div class="product"
+            data-name="boAt Airdopes 141"
+            data-price="₹1,299"
+            data-category="Accessories"
+            data-description="42H total playtime, ENx noise isolation, 10mm drivers, IPX4 water resistance. Instant voice assistant access."
+            data-image="">
+            <div class="product_pic"></div>
+            <div class="product_description">
+                <h4>Product Name: boAt Airdopes 141</h4>
+                <h4>Price: ₹1,299</h4>
+            </div>
+            <div class="product_description_button">
+ 
+            </div>
+        </div>
+
+        <div class="product"
+            data-name="Lenovo IdeaPad Slim 3"
+            data-price="₹44,990"
+            data-category="Laptops"
+            data-description="Intel Core i5 12th Gen, 8GB RAM, 512GB SSD, 15.6-inch FHD display, Windows 11 Home. Ideal for students and professionals."
+            data-image="">
+            <div class="product_pic"></div>
+            <div class="product_description">
+                <h4>Product Name: Lenovo IdeaPad Slim 3</h4>
+                <h4>Price: ₹44,990</h4>
+            </div>
+            <div class="product_description_button">
+            
+            </div>
+        </div>
+
+        <div class="product"
+            data-name="Anker 65W GaN Charger"
+            data-price="₹2,499"
+            data-category="Accessories"
+            data-description="Ultra-compact 65W GaN charger with dual USB-C ports. Charges laptop, phone and tablet simultaneously."
+            data-image="">
+            <div class="product_pic"></div>
+            <div class="product_description">
+                <h4>Product Name: Anker 65W GaN Charger</h4>
+                <h4>Price: ₹2,499</h4>
+            </div>
+            <div class="product_description_button">
+    
+            </div>
+        </div>
+
+        <div class="product"
+            data-name="OnePlus Nord CE 4"
+            data-price="₹24,999"
+            data-category="Smartphones"
+            data-description="Snapdragon 7s Gen 2, 8GB RAM, 256GB storage, 100W SUPERVOOC charging, 6.7-inch AMOLED display."
+            data-image="">
+            <div class="product_pic"></div>
+            <div class="product_description">
+                <h4>Product Name: OnePlus Nord CE 4</h4>
+                <h4>Price: ₹24,999</h4>
+            </div>
+            <div class="product_description_button">
+             
+            </div>
+        </div>
+
+        <div class="product"
+            data-name="WD 1TB Portable HDD"
+            data-price="₹3,799"
+            data-category="Storage"
+            data-description="USB 3.0 portable hard drive with 1TB capacity. Plug-and-play, compatible with PC, Mac, Xbox and PS4."
+            data-image="">
+            <div class="product_pic"></div>
+            <div class="product_description">
+                <h4>Product Name: WD 1TB Portable HDD</h4>
+                <h4>Price: ₹3,799</h4>
+            </div>
+            <div class="product_description_button">
         
+            </div>
+        </div>
+
     </div>
+
+    <!-- ─── FOOTER ─── -->
     <footer class="footer">
         <div class="footer-container">
-            <div class="footer-brand"> 
-                 <div class="logo"> <img src="logo.png" alt=""></div>
-               <h2> <span>Connecting trusted local electronics shops with buyers.</span></h2>
+            <div class="footer-brand">
+                <div class="logo"><img src="logo.png" alt="TrustTrap Logo"></div>
+                <h2><span>Connecting trusted local electronics shops with buyers.</span></h2>
             </div>
-
             <div class="footer-links">
                 <h4>Quick Links</h4>
                 <ul>
                     <li><a href="#home">Home</a></li>
+
                     <li><a href="#about">About</a></li>
                     <li><a href="#search">Search</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
-
             <div class="footer-contact">
                 <h4>Contact Us</h4>
                 <p>Email: support@towncart.com</p>
@@ -189,6 +277,67 @@
         </div>
     </footer>
 
-</body>
+    <!-- ─── PRODUCT DETAIL MODAL ─── -->
+    <div class="overlay" id="overlay">
+        <div class="modal" id="modal">
 
+            <!-- Image area with upload button -->
+            <div class="modal-img-wrap" id="modal-img-wrap">
+                <span class="modal-img-placeholder" id="modal-emoji">📦</span>
+                <img id="modal-img" src="" alt="Product Image" style="display:none;" />
+                <!-- <button class="upload-btn" onclick="document.getElementById('file-input').click()">
+                    <i class="fa-solid fa-upload"></i> Upload Image
+                </button> -->
+                <input type="file" id="file-input" accept="image/*" onchange="handleImageUpload(event)" />
+            </div>
+
+            <!-- Modal content -->
+            <div class="modal-body">
+
+                <!-- Name + Category + Close -->
+                <div class="modal-top-row">
+                    <div>
+                        <p class="modal-product-name" id="modal-name">Product Name</p>
+                        <span class="modal-category-pill" id="modal-category">Category</span>
+                    </div>
+                    <button class="modal-close" onclick="closeModal()" title="Close">&#x2715;</button>
+                </div>
+
+                <!-- Price -->
+                <div>
+                    <div class="modal-field-label">Price</div>
+                    <div class="modal-price-value" id="modal-price">₹0</div>
+                </div>
+
+                <div class="modal-divider"></div>
+
+                <!-- Description -->
+                <div>
+                    <div class="modal-field-label">Description</div>
+                    <div class="modal-field-text" id="modal-desc">—</div>
+                </div>
+
+                <div class="modal-divider"></div>
+
+                <!-- Image URL -->
+                <div>
+                    <div class="modal-field-label">Image URL</div>
+                    <div class="modal-url-box">
+                        <i class="fa-solid fa-link"></i>
+                        <span id="modal-url">No image uploaded yet</span>
+                    </div>
+                </div>
+
+                <!-- Action buttons -->
+                <div class="modal-actions">
+                    <button class="modal-btn-primary">Visit Shop Page</button>
+                    <button class="modal-btn-secondary">Contact Shop</button>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <script src="script.js"></script>
+
+</body>
 </html>
