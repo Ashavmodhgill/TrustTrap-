@@ -24,7 +24,7 @@ import {
 
 import { getProductsbyCategory } from '../../controller/category-controller.js';
 import passport from "passport";
-
+import { shoppingBot } from "../../controller/chatbot-controller.js";
 const router = express.Router();
 
 
@@ -56,4 +56,6 @@ router.get('/categories/:category', getProductsbyCategory );
 // Product routes
 router.get('/products/category/:category',GetproductByCategory);
 
+// chatbot routes
+router.post("/chatbot", shoppingBot);
 export default router;
