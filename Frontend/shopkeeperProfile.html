@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopkeeper Profile – TrustTrap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="shopkeeperprofile">
+    
+    <!-- TOPNAV -->
+    <nav class="topnav">
+        <span class="nav-brand">Trust<span>Trap</span></span>
+        <div class="nav-actions">
+            <a href="index.html" class="nav-btn ghost"><i class="fa-solid fa-house"></i> Home</a>
+            <button class="nav-btn solid" onclick="scrollToUpload()"><i class="fa-solid fa-plus"></i> Add
+                Product</button>
+        </div>
+    </nav>
+
+    <!-- COVER -->
+    <div class="cover-section">
+        <div class="cover-pattern"></div>
+        <div class="cover-verified"><i class="fa-solid fa-circle-check"></i> Verified Seller</div>
+    </div>
+
+    <!-- PROFILE HEADER -->
+    <div class="profile-header">
+        <div class="avatar-wrap">
+            <div class="avatar" id="avatarBox">
+                <img id="avatarImg" src="" alt="">
+                <span id="avatarInitials">RK</span>
+            </div>
+            <label class="avatar-edit" title="Change photo">
+                <i class="fa-solid fa-camera"></i>
+                <input type="file" accept="image/*" onchange="changeAvatar(this)">
+            </label>
+        </div>
+
+        <div class="profile-meta">
+            <div class="profile-info">
+                <h1 id="dispShopName">AshavDeep Gill's Electronics Hub</h1>
+                <div class="owner"><i class="fa-solid fa-user"></i> <span id="dispOwner">AshavDeep Gill</span> · Owner</div>
+                <div class="profile-tags">
+                    <span class="tag purple"><i class="fa-solid fa-store"></i> Shopkeeper</span>
+                    <span class="tag orange"><i class="fa-solid fa-location-dot"></i> <span id="dispCity">Tarn Taran,
+                            Punjab</span></span>
+                    <span class="tag green"><i class="fa-solid fa-circle-check"></i> Verified</span>
+                </div>
+            </div>
+            <div class="profile-actions">
+                <button class="edit-profile-btn" onclick="toggleEditModal()">
+                    <i class="fa-solid fa-pen"></i> Edit Profile
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <span class="stat-num" id="statProducts">0</span>
+            <span class="stat-label">Products</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-num">3.8 <span class="stars">★</span></span>
+            <span class="stat-label">Rating</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-num">8d</span>
+            <span class="stat-label">On TrustTrap</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-num">00</span>
+            <span class="stat-label">Sales</span>
+        </div>
+    </div>
+
+    <!-- PAGE BODY -->
+    <div class="page-body">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <!-- Shop Info -->
+            <div class="info-card">
+                <div class="info-card-title"><i class="fa-solid fa-store"></i> Shop Details</div>
+
+                <div class="info-row">
+                    <div class="info-icon"><i class="fa-solid fa-shop"></i></div>
+                    <div class="info-text">
+                        <div class="label">Shop Name</div>
+                        <div class="value" id="siShopName">AshavDeep Gill's Electronics Hub</div>
+                    </div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-icon"><i class="fa-solid fa-user"></i></div>
+                    <div class="info-text">
+                        <div class="label">Owner</div>
+                        <div class="value" id="siOwner">AshavDeep</div>
+                    </div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <div class="info-text">
+                        <div class="label">Email</div>
+                        <div class="value" id="siEmail">AshavDeep213@shop.com</div>
+                    </div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div class="info-text">
+                        <div class="label">Phone</div>
+                        <div class="value" id="siPhone">+91 98765 43210</div>
+                    </div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <div class="info-text">
+                        <div class="label">Address</div>
+                        <div class="value" id="siAddress">Shop No. 14, Main Market, Tran Taran, Punjab</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Tips -->
+            <div class="info-card">
+                <div class="info-card-title"><i class="fa-solid fa-lightbulb"></i> Seller Tips</div>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                    <div class="info-row">
+                        <div class="info-icon" style="background:#fff0e6;color:var(--orange)"><i
+                                class="fa-solid fa-camera"></i></div>
+                        <div class="info-text">
+                            <div class="value" style="font-size:0.75rem;font-weight:500">Use 3+ clear product photos to
+                                sell 2× faster</div>
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-icon" style="background:#dcfce7;color:var(--success)"><i
+                                class="fa-solid fa-tag"></i></div>
+                        <div class="info-text">
+                            <div class="value" style="font-size:0.75rem;font-weight:500">Mention brand, model & warranty
+                                clearly</div>
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-icon" style="background:var(--purple-light);color:var(--purple)"><i
+                                class="fa-solid fa-indian-rupee-sign"></i></div>
+                        <div class="info-text">
+                            <div class="value" style="font-size:0.75rem;font-weight:500">Price competitively — check
+                                similar listings</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN COL -->
+        <div class="main-col">
+
+            <!-- Listed Products -->
+            <div class="products-card" id="productsSection">
+                <div class="section-head">
+                    <h2>
+                        <div class="sec-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+                        My Products
+                    </h2>
+                    <button class="section-btn" onclick="scrollToUpload()">
+                        <i class="fa-solid fa-plus"></i> Add New
+                    </button>
+                </div>
+
+                <div class="product-grid" id="productGrid">
+                    <div class="empty-products" id="emptyMsg">
+                        <i class="fa-solid fa-box-open"></i>
+                        <p>No products yet. Add your first product below!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UPLOAD PRODUCT FORM -->
+            <div class="upload-card" id="uploadSection">
+                <div class="section-head" style="margin-bottom:0">
+                    <h2>
+                        <div class="sec-icon"><i class="fa-solid fa-upload"></i></div>
+                        Upload New Product
+                    </h2>
+                </div>
+
+                <!-- STEPS -->
+                <div class="steps" style="margin-top:20px;">
+                    <div class="step active" id="step1tab" onclick="goStep(1)">
+                        <div class="step-num">1</div> Basic Info
+                    </div>
+                    <div class="step" id="step2tab" onclick="goStep(2)">
+                        <div class="step-num">2</div> Details
+                    </div>
+                    <div class="step" id="step3tab" onclick="goStep(3)">
+                        <div class="step-num">3</div> Images
+                    </div>
+                    <div class="step" id="step4tab" onclick="goStep(4)">
+                        <div class="step-num">4</div> Shipping
+                    </div>
+                </div>
+
+                <!-- STEP 1: Basic Info -->
+                <div class="form-panel active" id="panel1">
+                    <div class="f-grid" style="margin-top:20px;">
+                        <div class="f-group">
+                            <label>Product Name <span class="req">*</span></label>
+                            <input type="text" id="pName" placeholder="e.g. Samsung Galaxy M35 5G" maxlength="100"
+                                oninput="updateCount('pName','pNameC',100)">
+                            <div class="f-footer"><span class="f-hint">Include brand & model</span><span class="char-c"
+                                    id="pNameC">0/100</span></div>
+                        </div>
+                        <div class="f-group">
+                            <label>Category <span class="req">*</span></label>
+                            <div class="select-wrap">
+                                <select id="pCat">
+                                    <option value="" disabled selected>Select category</option>
+                                    <option>Smartphones</option>
+                                    <option>Laptops</option>
+                                    <option>Accessories</option>
+                                    <option>Earphones & Headphones</option>
+                                    <option>Smartwatches</option>
+                                    <option>Tablets</option>
+                                    <option>Cameras</option>
+                                    <option>Smart TVs</option>
+                                    <option>Gaming</option>
+                                    <option>Other Electronics</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="f-grid">
+                        <div class="f-group">
+                            <label>MRP / Price (₹) <span class="req">*</span></label>
+                            <div class="prefix-wrap">
+                                <span class="pfx">₹</span>
+                                <input type="number" id="pPrice" placeholder="0" min="0">
+                            </div>
+                        </div>
+                        <div class="f-group">
+                            <label>Discounted Price (₹)</label>
+                            <div class="prefix-wrap">
+                                <span class="pfx">₹</span>
+                                <input type="number" id="pDiscount" placeholder="Optional">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="f-group">
+                        <label>Brand</label>
+                        <input type="text" id="pBrand" placeholder="e.g. Samsung, Apple, boAt...">
+                    </div>
+
+                    <div class="f-group">
+                        <label>Short Description <span class="req">*</span></label>
+                        <textarea id="pDesc"
+                            placeholder="Describe your product — key features, what's in the box, warranty..."
+                            maxlength="600" oninput="updateCount('pDesc','pDescC',600)"></textarea>
+                        <div class="f-footer"><span class="f-hint">Min. 30 characters</span><span class="char-c"
+                                id="pDescC">0/600</span></div>
+                    </div>
+
+                    <div class="form-nav">
+                        <span></span>
+                        <button class="btn-next" onclick="goStep(2)">Next <i
+                                class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Details -->
+                <div class="form-panel" id="panel2">
+                    <div style="margin-top:20px;">
+                        <div class="f-group">
+                            <label>Product Condition <span class="req">*</span></label>
+                            <div class="condition-opts">
+                                <button class="cond-opt selected" onclick="selectCond(this,'New')"><i
+                                        class="fa-solid fa-star"></i>Brand New</button>
+                                <button class="cond-opt" onclick="selectCond(this,'Like New')"><i
+                                        class="fa-solid fa-thumbs-up"></i>Like New</button>
+                                <button class="cond-opt" onclick="selectCond(this,'Good')"><i
+                                        class="fa-solid fa-check"></i>Good</button>
+                                <button class="cond-opt" onclick="selectCond(this,'Fair')"><i
+                                        class="fa-solid fa-triangle-exclamation"></i>Fair</button>
+                            </div>
+                        </div>
+
+                        <div class="f-grid">
+                            <div class="f-group">
+                                <label>Model Number</label>
+                                <input type="text" id="pModel" placeholder="e.g. SM-M356B">
+                            </div>
+                            <div class="f-group">
+                                <label>Stock Quantity <span class="req">*</span></label>
+                                <input type="number" id="pStock" placeholder="1" min="1">
+                            </div>
+                        </div>
+
+                        <div class="f-group">
+                            <label>Key Specifications</label>
+                            <div class="f-grid-3">
+                                <input type="text" id="pSpec1" placeholder="e.g. 6GB RAM">
+                                <input type="text" id="pSpec2" placeholder="e.g. 128GB Storage">
+                                <input type="text" id="pSpec3" placeholder="e.g. 5000mAh">
+                            </div>
+                            <div class="f-grid-3" style="margin-top:10px;">
+                                <input type="text" id="pSpec4" placeholder="e.g. 6.6 inch display">
+                                <input type="text" id="pSpec5" placeholder="e.g. Android 14">
+                                <input type="text" id="pSpec6" placeholder="e.g. 50MP Camera">
+                            </div>
+                        </div>
+
+                        <div class="f-group">
+                            <label>Warranty</label>
+                            <div class="select-wrap">
+                                <select id="pWarranty">
+                                    <option value="">No Warranty</option>
+                                    <option>1 Month</option>
+                                    <option>3 Months</option>
+                                    <option>6 Months</option>
+                                    <option>1 Year</option>
+                                    <option>2 Years</option>
+                                    <option>Manufacturer Warranty</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="f-group">
+                            <label>Search Tags</label>
+                            <div class="tags-input-wrap" id="tagsWrap"
+                                onclick="document.getElementById('tagInput').focus()">
+                                <input type="text" id="tagInput" placeholder="Type tag and press Enter..."
+                                    onkeydown="addTag(event)">
+                            </div>
+                            <div class="f-footer"><span class="f-hint">Press Enter to add a tag (e.g. 5G, gaming,
+                                    budget)</span></div>
+                        </div>
+                    </div>
+
+                    <div class="form-nav">
+                        <button class="btn-back" onclick="goStep(1)"><i class="fa-solid fa-arrow-left"></i>
+                            Back</button>
+                        <button class="btn-next" onclick="goStep(3)">Next <i
+                                class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- STEP 3: Images -->
+                <div class="form-panel" id="panel3">
+                    <div style="margin-top:20px;">
+                        <div class="f-group">
+                            <label>Product Photos <span class="req">*</span> <span
+                                    style="font-size:0.65rem;color:var(--text-muted);text-transform:none;font-weight:400">(up
+                                    to 8 · first = cover)</span></label>
+                            <div class="img-upload-zone" id="imgZone" ondragover="dzOver(event)"
+                                ondragleave="dzLeave(event)" ondrop="dzDrop(event)">
+                                <input type="file" id="imgInput" accept="image/*" multiple
+                                    onchange="handleImgs(this.files)">
+                                <div class="upload-icon-big"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                                <h4>Drag & drop photos here</h4>
+                                <p>or <span class="browse">browse from device</span><br>PNG, JPG, WEBP · max 5MB each ·
+                                    up to 8 images</p>
+                            </div>
+                            <div class="img-grid" id="imgGrid"></div>
+                        </div>
+
+                        <div class="f-group">
+                            <label>YouTube / Video URL <span
+                                    style="font-size:0.65rem;color:var(--text-muted);text-transform:none;font-weight:400">(optional)</span></label>
+                            <input type="url" id="pVideo" placeholder="https://youtube.com/...">
+                        </div>
+                    </div>
+
+                    <div class="form-nav">
+                        <button class="btn-back" onclick="goStep(2)"><i class="fa-solid fa-arrow-left"></i>
+                            Back</button>
+                        <button class="btn-next" onclick="goStep(4)">Next <i
+                                class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+
+                <!-- TOAST -->
+                <div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i><span id="toastMsg">Done!</span>
+                </div>
+
+</div>
+</body>
+
+</html>
