@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
 </head>
@@ -19,24 +21,25 @@
     <div class="herosection">
         <header class="header">
             <div class="logo"><img src="logo.png" alt="TrustTrap Logo"></div>
-<div class="search-box">
-  <input type="text" placeholder="Search here">
-  <i class="fa-solid fa-magnifying-glass"></i>
-</div>
+            <div class="search-box">
+                <input type="text" placeholder="Search here">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
 
             <ul class="nav-list">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#search">Category</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact" class="Ai">
-                    <button onclick="window.location.href='ai.html'">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i> AI Suggestions
-                    </button>
-                </a></li>
+                        <button onclick="window.location.href='ai.html'">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> AI Suggestions
+                        </button>
+                    </a></li>
             </ul>
             <div class="nav_button">
                 <button onclick="window.location.href='login&Signin.html#signup'">Sign up</button>
                 <button onclick="window.location.href='login&Signin.html#signup'">Login</button>
+                <i class="fa-solid fa-circle-user" id="profileIcon" onclick="window.location.href='shopkeeperProfile.html'" ></i>
             </div>
         </header>
 
@@ -46,129 +49,37 @@
                 <h3>Discover a wide range of high-quality products and trusted brands — all in one platform.</h3>
                 <br>
                 <h1>What are you waiting for?</h1>
-                 
-            <h3>Upload Your Product Now</h3>
+
+                <h3>Register Now !!!</h3>
             </div>
         </div>
     </div>
+    <div class="register-container-outer">
+        <div class="register-container">
+            <h2>Shopkeeper Registration</h2>
+            <form id="shopForm">
+                <label for="shopName">Shop Name</label>
+                <input type="text" id="shopName" required>
 
-    <!-- ─── INFO STRIP ─── -->
-    <div class="info1">
-        <p id="info1">Trusted by millions of people across India</p><br>
-        <h4>100% verified sellers. Zero compromise on quality.</h4>
+                <label for="ownerName">Owner Name</label>
+                <input type="text" id="ownerName" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" required>
+
+                <label for="address">Shop Address</label>
+                <input id="address" required></input>
+
+                <button type="submit">Register Shop</button>
+            </form>
+
+            <div id="output" class="output" style="display:none;"></div>
+        </div>
     </div>
-
-
-    <div class="shopping">
-
-        <!--
-            HOW TO ADD A PRODUCT:
-            Copy one .product div below and fill in:
-              data-name        → product name
-              data-price       → price (e.g. ₹12,999)
-              data-category    → category label
-              data-description → short product description
-              data-image       → URL of product image (leave blank if shopkeeper will upload)
-        -->
-
-        <div class="product"
-            data-name="Samsung Galaxy A55"
-            data-price="₹32,999"
-            data-category="Smartphones"
-            data-description="6.6-inch Super AMOLED display, 50MP triple camera, 5000mAh battery, and 1-year Samsung brand warranty included."
-            data-image="">
-            <div class="product_pic"></div>
-            <div class="product_description">
-                <h4>Product Name: Samsung Galaxy A55</h4>
-                <h4>Price: ₹32,999</h4>
-            </div>
-            <div class="product_description_button">
-                 
-            </div>
-        </div>
-
-        <div class="product"
-            data-name="boAt Airdopes 141"
-            data-price="₹1,299"
-            data-category="Accessories"
-            data-description="42H total playtime, ENx noise isolation, 10mm drivers, IPX4 water resistance. Instant voice assistant access."
-            data-image="">
-            <div class="product_pic"></div>
-            <div class="product_description">
-                <h4>Product Name: boAt Airdopes 141</h4>
-                <h4>Price: ₹1,299</h4>
-            </div>
-            <div class="product_description_button">
- 
-            </div>
-        </div>
-
-        <div class="product"
-            data-name="Lenovo IdeaPad Slim 3"
-            data-price="₹44,990"
-            data-category="Laptops"
-            data-description="Intel Core i5 12th Gen, 8GB RAM, 512GB SSD, 15.6-inch FHD display, Windows 11 Home. Ideal for students and professionals."
-            data-image="">
-            <div class="product_pic"></div>
-            <div class="product_description">
-                <h4>Product Name: Lenovo IdeaPad Slim 3</h4>
-                <h4>Price: ₹44,990</h4>
-            </div>
-            <div class="product_description_button">
-            
-            </div>
-        </div>
-
-        <div class="product"
-            data-name="Anker 65W GaN Charger"
-            data-price="₹2,499"
-            data-category="Accessories"
-            data-description="Ultra-compact 65W GaN charger with dual USB-C ports. Charges laptop, phone and tablet simultaneously."
-            data-image="">
-            <div class="product_pic"></div>
-            <div class="product_description">
-                <h4>Product Name: Anker 65W GaN Charger</h4>
-                <h4>Price: ₹2,499</h4>
-            </div>
-            <div class="product_description_button">
     
-            </div>
-        </div>
-
-        <div class="product"
-            data-name="OnePlus Nord CE 4"
-            data-price="₹24,999"
-            data-category="Smartphones"
-            data-description="Snapdragon 7s Gen 2, 8GB RAM, 256GB storage, 100W SUPERVOOC charging, 6.7-inch AMOLED display."
-            data-image="">
-            <div class="product_pic"></div>
-            <div class="product_description">
-                <h4>Product Name: OnePlus Nord CE 4</h4>
-                <h4>Price: ₹24,999</h4>
-            </div>
-            <div class="product_description_button">
-             
-            </div>
-        </div>
-
-        <div class="product"
-            data-name="WD 1TB Portable HDD"
-            data-price="₹3,799"
-            data-category="Storage"
-            data-description="USB 3.0 portable hard drive with 1TB capacity. Plug-and-play, compatible with PC, Mac, Xbox and PS4."
-            data-image="">
-            <div class="product_pic"></div>
-            <div class="product_description">
-                <h4>Product Name: WD 1TB Portable HDD</h4>
-                <h4>Price: ₹3,799</h4>
-            </div>
-            <div class="product_description_button">
-        
-            </div>
-        </div>
-
-    </div>
-
     <!-- ─── FOOTER ─── -->
     <footer class="footer">
         <div class="footer-container">
@@ -261,8 +172,9 @@
             </div>
         </div>
     </div>
- 
+
     <script src="script.js"></script>
 
 </body>
+
 </html>
