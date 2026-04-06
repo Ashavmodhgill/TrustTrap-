@@ -311,3 +311,266 @@ function closeSidebar() {
             reader.readAsDataURL(file);
         }
     
+    // ── Load shopkeeper data from registration form (or use demo data) ──
+    function loadShopData() {
+        const saved = JSON.parse(localStorage.getItem('shopData') || '{}');
+        const shopName  = saved.shopName  || 'AshavDeep Gill\'s Electronics Hub';
+        const ownerName = saved.ownerName || 'AshavDeep Gill';
+        const email     = saved.email     || 'AshavDeepGill213@shop.com';
+        const phone     = saved.phone     || '+91 98765 43210';
+        const address   = saved.address   || 'Shop No. 14, Main Market, Tran Taran, Punjab';
+
+        // Profile header
+        document.getElementById('dispShopName').textContent = shopName;
+        document.getElementById('dispOwner').textContent = ownerName;
+
+        // Sidebar
+        document.getElementById('siShopName').textContent = shopName;
+        document.getElementById('siOwner').textContent = ownerName;
+        document.getElementById('siEmail').textContent = email;
+        document.getElementById('siPhone').textContent = phone;
+        document.getElementById('siAddress').textContent = address;
+
+        // Avatar initials
+        const parts = ownerName.split(' ');
+        const initials = parts.map(p => p[0]).join('').toUpperCase().slice(0,2);
+        document.getElementById('avatarInitials').textContent = initials;
+
+        // City tag
+        const city = address.split(',').slice(-2).join(',').trim();
+        document.getElementById('dispCity').textContent = city || address;
+    }
+
+    loadShopData();
+    loadProducts();
+
+    // ── AVATAR CHANGE ──
+    function changeAvatar(input) {
+        const file = input.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = e => {
+            const img = document.getElementById('avatarImg');
+            img.src = e.target.result;
+            img.style.display = 'block';
+            document.getElementById('avatarInitials').style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+    }
+
+    // ── SCROLL TO UPLOAD ──
+    function scrollToUpload() {
+        document.getElementById('uploadSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // ── STEPS ──
+    let currentStep = 1;
+    const totalSteps = 4;
+
+    function goStep(n) {
+        // Mark done steps
+        for (let i = 1; i <= totalSteps; i++) {
+            const tab = document.getElementById('step' + i + 'tab');
+            const panel = document.getElementById('panel' + i);
+            tab.classList.remove('active', 'done');
+            panel.classList.remove('active');
+            if (i < n) tab.classList.add('done');
+        }
+        document.getElementById('step' + n + 'tab').classList.add('active');
+        document.getElementById('panel' + n).classList.add('active');
+        currentStep = n;
+    }
+
+    // ── CHAR COUNT ──
+    function updateCount(inputId, countId, max) {
+        const val = document.getElementById(inputId).value.length;
+        document.getElementById(countId).textContent = val + '/' + max;
+    }
+
+    // ── CONDITION SELECT ──
+    let selectedCondition = 'New';
+    function selectCond(btn, val) {
+        document.querySelectorAll('.cond-opt').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        selectedCondition = val;
+    }
+
+    // ── TAGS ──
+    let tags = [];
+    function addTag(e) {
+        if (e.key !== 'Enter') return;
+        e.preventDefault();
+        const input = document.getElementById('tagInput');
+        const val = input.value.trim();
+        if (!val || tags.includes(val)) { input.value = ''; return; }
+        tags.push(val);
+        input.value = '';
+        renderTags();
+    }
+
+    function removeTag(tag) {
+        tags = tags.filter(t => t !== tag);
+        renderTags();
+    }
+
+    function renderTags() {
+        const wrap = document.getElementById('tagsWrap');
+        const input = document.getElementById('tagInput');
+        // remove old pills
+        wrap.querySelectorAll('.tag-pill').forEach(p => p.remove());
+        tags.forEach(tag => {
+            const pill = document.createElement('span');
+            pill.className = 'tag-pill';
+            pill.innerHTML = `${tag}<button onclick="removeTag('${tag}')"><i class="fa-solid fa-xmark"></i></button>`;
+            wrap.insertBefore(pill, input);
+        });
+    }
+
+    // ── IMAGES ──
+    let uploadedImgs = [];
+
+    function handleImgs(files) {
+        const space = 8 - uploadedImgs.length;
+        Array.from(files).slice(0, space).forEach(file => {
+            if (!file.type.startsWith('image/')) return;
+            if (file.size > 5 * 1024 * 1024) { showToast('⚠️ ' + file.name + ' over 5MB'); return; }
+            uploadedImgs.push(file);
+        });
+        renderImgs();
+    }
+
+    function renderImgs() {
+        const grid = document.getElementById('imgGrid');
+        grid.innerHTML = '';
+        uploadedImgs.forEach((file, i) => {
+            const reader = new FileReader();
+            reader.onload = e => {
+                const item = document.createElement('div');
+                item.className = 'img-thumb';
+                item.innerHTML = `
+                    <img src="${e.target.result}" alt="">
+                    ${i === 0 ? '<span class="cover-badge">Cover</span>' : ''}
+                    <button class="rm" onclick="removeImg(${i})"><i class="fa-solid fa-xmark"></i></button>`;
+                grid.appendChild(item);
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    function removeImg(i) { uploadedImgs.splice(i, 1); renderImgs(); }
+
+    function dzOver(e) { e.preventDefault(); document.getElementById('imgZone').classList.add('drag'); }
+    function dzLeave(e) { document.getElementById('imgZone').classList.remove('drag'); }
+    function dzDrop(e) {
+        e.preventDefault();
+        document.getElementById('imgZone').classList.remove('drag');
+        handleImgs(e.dataTransfer.files);
+    }
+
+      
+    // ── PUBLISH PRODUCT ──
+    let products = [];
+
+    function publishProduct() {
+        const name  = document.getElementById('pName').value.trim();
+        const cat   = document.getElementById('pCat').value;
+        const price = document.getElementById('pPrice').value;
+        const desc  = document.getElementById('pDesc').value.trim();
+
+        if (!name)           { showToast('⚠️ Enter a product name'); goStep(1); return; }
+        if (!cat)            { showToast('⚠️ Select a category'); goStep(1); return; }
+        if (!price || +price <= 0) { showToast('⚠️ Enter a valid price'); goStep(1); return; }
+        if (desc.length < 10) { showToast('⚠️ Add a product description'); goStep(1); return; }
+        if (uploadedImgs.length === 0) { showToast('⚠️ Upload at least one image'); goStep(3); return; }
+
+        const reader = new FileReader();
+        reader.onload = e => {
+            const product = {
+                id: Date.now(),
+                name, cat, price,
+                discount: document.getElementById('pDiscount').value,
+                brand: document.getElementById('pBrand').value,
+                desc,
+                condition: selectedCondition,
+                coverImg: e.target.result,
+                status: 'pending'
+            };
+
+            products.unshift(product);
+            saveProducts();
+            renderProducts();
+            showToast('✅ Product published! Live within 24h.');
+            resetForm();
+            setTimeout(() => {
+                document.getElementById('productsSection').scrollIntoView({ behavior: 'smooth' });
+            }, 600);
+        };
+
+        reader.readAsDataURL(uploadedImgs[0]);
+    }
+
+    function resetForm() {
+        ['pName','pPrice','pDiscount','pBrand','pDesc','pModel','pStock','pSpec1','pSpec2','pSpec3','pSpec4','pSpec5','pSpec6','pVideo','pNotes'].forEach(id => {
+            document.getElementById(id).value = '';
+        });
+        document.getElementById('pCat').value = '';
+        tags = []; renderTags();
+        uploadedImgs = []; renderImgs();
+        selectedCondition = 'New';
+        document.querySelectorAll('.cond-opt').forEach((b,i) => b.classList.toggle('selected', i===0));
+        goStep(1);
+    }
+
+    // ── PERSIST PRODUCTS ──
+    function saveProducts() {
+        try { localStorage.setItem('ttProducts', JSON.stringify(products)); } catch(e) {}
+    }
+
+    function loadProducts() {
+        try { products = JSON.parse(localStorage.getItem('ttProducts') || '[]'); } catch(e) { products = []; }
+        renderProducts();
+    }
+
+    const EMOJIS = { 'Smartphones':'📱','Laptops':'💻','Accessories':'🎧','Earphones & Headphones':'🎧','Smartwatches':'⌚','Tablets':'📟','Cameras':'📷','Smart TVs':'📺','Gaming':'🎮','Other Electronics':'🔌' };
+
+    function renderProducts() {
+        const grid = document.getElementById('productGrid');
+        const empty = document.getElementById('emptyMsg');
+        document.getElementById('statProducts').textContent = products.length;
+
+        if (products.length === 0) {
+            grid.innerHTML = '';
+            grid.appendChild(empty);
+            empty.style.display = 'block';
+            return;
+        }
+
+        empty.style.display = 'none';
+        grid.innerHTML = '';
+
+        products.forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'prod-card';
+            const emoji = EMOJIS[p.cat] || '📦';
+            const discounted = p.discount && +p.discount < +p.price;
+            card.innerHTML = `
+                <div class="prod-img" style="${p.coverImg ? `background-image:url('${p.coverImg}');background-size:cover;background-position:center;` : ''}">
+                    ${!p.coverImg ? emoji : ''}
+                    <span class="prod-status ${p.status}">${p.status === 'pending' ? '⏳ Pending' : '✅ Live'}</span>
+                </div>
+                <div class="prod-body">
+                    <div class="prod-name">${p.name}</div>
+                    <div class="prod-price">₹${Number(p.price).toLocaleString('en-IN')}${discounted ? ` <span style="font-size:0.7rem;color:var(--text-muted);text-decoration:line-through;font-weight:400">₹${Number(p.price).toLocaleString('en-IN')}</span>` : ''}</div>
+                    <div class="prod-cat">${p.cat} · ${p.condition}</div>
+                </div>`;
+            grid.appendChild(card);
+        });
+    }
+
+    // ── TOAST ──
+    function showToast(msg) {
+        document.getElementById('toastMsg').textContent = msg;
+        const t = document.getElementById('toast');
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 3200);
+    }
